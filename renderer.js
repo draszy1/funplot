@@ -5,12 +5,48 @@
 // selectively enable features needed in the rendering
 // process.
 
+require("jquery");
 
+let farg = [];
+let fval = [];
 
-let data = {
-    x: [1, 2, 3, 4],
-    y: [10, 15, 13, 17],
-    type: 'scatter',
-};
+let min;
+let max;
 
-Plotly.newPlot('graph-canvas', [data], {}, {showSendToCloud: true});
+$("#plot-btn").click(() => {
+    min = $("#min-field").val();
+    max = $("#max-field").val();
+    fequation = $("#function-field").val();
+
+    fval = [];
+    farg = [];
+
+    for (let x = min; x < max; x++) {
+        farg.push(x);
+        fval.push(evaluateExpression(x, fequation));
+    }
+
+    console.log("x=" + farg + " y=" + fval + " func=" + fequation);
+    plot(farg, fval);
+});
+
+function prepare(formula) {
+    return formula
+        .replace("log", "Math.log")
+        .replace("abs", "Math.abs");
+}
+
+function evaluateExpression(x, formula) {
+    let preparedFormula = prepare(formula);
+    return (new Function( 'x', 'return (' + preparedFormula + ')' )(x));
+}
+
+function plot(x, y) {
+    let data = {
+        x: farg,
+        y: fval,
+        type: 'scatter',
+    };
+
+    Plotly.newPlot('graph-canvas', [data], {}, {showSendToCloud: true});
+}
