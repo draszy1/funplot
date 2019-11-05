@@ -13,5 +13,9 @@
   "devDependencies": {
     "electron": "^7.1.0",
     "nodemon": "^1.19.4"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "plotly.js-dist": "^1.51.1"
   }
 }
