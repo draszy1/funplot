@@ -10,15 +10,38 @@
 </head>
 <body>
 <div class="container">
-    <row class="" row>
+    <div class="row">
         <h1>Plotter for fun</h1>
-    </row>
+    </div>
     <div class="row">
         <div class="col-sm">
             <div id="graph-canvas"></div>
         </div>
-        <div class="col-sm">
-            One of three columns
+        <div class="col-sm border border-primary">
+            <div class="row margin-bottom mb-2 justify-content-center">
+                <span>
+                Specify min and max values
+                </span>
+            </div>
+            <div class="row justify-content-center">
+                <div>
+                    <span>MIN: </span>
+                    <input type="number" class="input" id="min-field" placeholder="0">
+                </div>
+                <div>
+                    <span>MAX: </span>
+                    <input type="number" class="input" id="max-field" placeholder="10">
+                </div>
+                <div class="mt-2">
+                    <span>Function</span>
+                    <div>
+                        <input type="text" class="text" id="function-field" placeholder="2*x+1">
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <button class="btn btn-primary mt-3" id="plot-btnrs">Plot!</button>
+            </div>
         </div>
     </div>
 </div>
