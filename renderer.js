@@ -5,8 +5,6 @@
 // selectively enable features needed in the rendering
 // process.
 
-require("jquery");
-
 let farg = [];
 let fval = [];
 
@@ -16,7 +14,7 @@ let max;
 $("#plot-btn").click(() => {
     min = $("#min-field").val();
     max = $("#max-field").val();
-    fequation = $("#function-field").val();
+    let fequation = $("#function-field").val();
 
     fval = [];
     farg = [];
